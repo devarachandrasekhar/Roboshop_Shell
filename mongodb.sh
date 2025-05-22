@@ -40,9 +40,9 @@ VALIDATE $? "Installed mongodb "
 
 sudo systemctl enable mongod &>> $LOGFILE
 
-VALIDATE $? "enabled mongodb"
+VALIDATE $? "enabled mongod"
 
-systemctl start  mongodb &>> $LOGFILE
+systemctl start  mongod &>> $LOGFILE
 
 VALIDATE $? "started mongodb"
 
