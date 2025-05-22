@@ -32,27 +32,27 @@ VALIDATE (){
 
 cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo &>> $LOGFILE
 
-VALIDATE $? "copied"
+VALIDATE $? "copied mongodb-org-4.4.repo in /etc/yum.repos.d/ "
 
 sudo dnf install -y mongodb-org &>> $LOGFILE
 
-VALIDATE $? "Install"
+VALIDATE $? "Installed mongodb "
 
 sudo systemctl enable mongod &>> $LOGFILE
 
-VALIDATE $? "enable"
+VALIDATE $? "enabled mongodb"
 
-#systemctl start  mongodb &>> $LOGFILE
+systemctl start  mongodb &>> $LOGFILE
 
-#VALIDATE $? "start"
+VALIDATE $? "started mongodb"
 
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 
 VALIDATE $? "Edited MongoDB conf"
 
-systemctl restart  mongodb &>> $LOGFILE
+systemctl restart  mongod &>> $LOGFILE
 
-VALIDATE $? "start"
+VALIDATE $? "restartd mongodb"
 
 
 
