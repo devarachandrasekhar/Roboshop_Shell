@@ -38,11 +38,9 @@ sudo dnf install -y mongodb-org &>> $LOGFILE
 
 VALIDATE $? "Install"
 
-sudo systemctl start mongod &>> $LOGFILE
+sudo systemctl enable mongod &>> $LOGFILE
 
-VALIDATE $? "start"
-
-
+VALIDATE $? "enable"
 
 systemctl status  mongodb &>> $LOGFILE
 
