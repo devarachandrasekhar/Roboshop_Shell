@@ -39,6 +39,7 @@ VALIDATE $? status
 
 
 VALIDATE ()
+{
 
 if  [ $1 -ne 0 ]
     then
@@ -47,3 +48,4 @@ if  [ $1 -ne 0 ]
     else
         echo "$2 $G successfull $N"
 fi        
+}
