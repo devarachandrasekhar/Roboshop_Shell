@@ -19,7 +19,7 @@ if  [ $USER -ne 0 ]
         exit 1    
 fi
 
-cp mongodb-org-4.4.repo /etc//etc/yum.repos.d/mongodb-org-4.4.repo
+cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo
 
 VALIDATE $? copied
 
