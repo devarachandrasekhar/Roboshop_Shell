@@ -23,10 +23,10 @@ fi
 VALIDATE (){
     if  [ $1 -ne 0 ]
     then
-        echo "$2 $R failed $N"
+        echo -e "$2 $R failed $N"
         exit 1
     else
-        echo "$2 $G successfull $N"
+        echo -e "$2 $G successfull $N"
     fi        
 }
 
