@@ -42,9 +42,9 @@ sudo systemctl enable mongod &>> $LOGFILE
 
 VALIDATE $? "enable"
 
-systemctl start  mongodb &>> $LOGFILE
+#systemctl start  mongodb &>> $LOGFILE
 
-VALIDATE $? "start"
+#VALIDATE $? "start"
 
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 
