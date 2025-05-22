@@ -54,7 +54,7 @@ VALIDATE $? "Downloaded devolper content"
 cd /app     &>> $LOGFILE
 #VALIDATE $? "Going to app dir"
 
-unzip /tmp/catalogue.zip    &>> $LOGFILE
+#unzip /tmp/catalogue.zip    &>> $LOGFILE
 #VALIDATE $? "unzip"
 
 
