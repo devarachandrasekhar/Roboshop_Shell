@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATE=$(date +%F)
-SCRIPT_NAME=$($0)
+SCRIPT_NAME=$0
 LOGDIR=/tmp/ 
 LOGFILE=$LOGDIR/$SCRIPT_NAME-$DATE.log
 
@@ -18,6 +18,17 @@ if  [ $USER -ne 0 ]
         echo "Run with root acess"
         exit 1    
 fi
+
+
+VALIDATE (){
+    if  [ $1 -ne 0 ]
+    then
+        echo "$2 $R failed $N"
+        exit 1
+    else
+        echo "$2 $G successfull $N"
+    fi        
+}
 
 cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo &>> $LOGFILE
 
@@ -41,12 +52,3 @@ sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 
 VALIDATE $? "Edited MongoDB conf"
 
-VALIDATE (){
-if  [ $1 -ne 0 ]
-    then
-        echo "$2 $R failed $N"
-        exit 1
-    else
-        echo "$2 $G successfull $N"
-fi        
-}
