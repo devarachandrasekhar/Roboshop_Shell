@@ -2,7 +2,7 @@
 
 DATE=$(date +%F)
 SCRIPT_NAME=$($0)
-LOGDIR=/home/ec2-user/Shell_Script/shell_logs 
+LOGDIR=/tmp/ 
 LOGFILE=$LOGDIR/$SCRIPT_NAME-$DATE.log
 
 R="\e[31m"
@@ -19,28 +19,29 @@ if  [ $USER -ne 0 ]
         exit 1    
 fi
 
-cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo
+cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo &>> $LOGFILE
 
-VALIDATE $? copied
+VALIDATE $? "copied"
 
-sudo dnf install -y mongodb-org
+sudo dnf install -y mongodb-org &>> $LOGFILE
 
-VALIDATE $? Install
+VALIDATE $? "Install"
 
-sudo systemctl start mongod
+sudo systemctl start mongod &>> $LOGFILE
 
-VALIDATE $? start
-
-systemctl status  mongodb
-
-VALIDATE $? status
+VALIDATE $? "start"
 
 
 
+systemctl status  mongodb &>> $LOGFILE
 
-VALIDATE ()
-{
+VALIDATE $? "status"
 
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
+
+VALIDATE $? "Edited MongoDB conf"
+
+VALIDATE (){
 if  [ $1 -ne 0 ]
     then
         echo "$2 $R failed $N"
