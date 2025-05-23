@@ -88,12 +88,12 @@ VALIDATE $? "Downloaded devolper content"
 
 
 
-cd /app/tmp     &>> $LOGFILE
+cd /app/     &>> $LOGFILE
 VALIDATE $? "Going to app dir"
 
 
 
-find 'catalogue.zip'
+find /tmp/catalogue.zip
 
 if [ $? -ne 0 ]
 then
