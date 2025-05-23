@@ -93,7 +93,7 @@ VALIDATE $? "Going to app dir"
 
 
 
-find tmp/catalogue.zip
+find catalogue.zip
 
 if [ $? -ne 0 ]
 then
