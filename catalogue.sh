@@ -88,7 +88,7 @@ VALIDATE $? "Downloaded devolper content"
 
 
 
-cd /app     &>> $LOGFILE
+cd /app/tmp     &>> $LOGFILE
 VALIDATE $? "Going to app dir"
 
 
