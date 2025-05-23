@@ -67,8 +67,18 @@ fi
 
 # useradd roboshop    &>> $LOGFILE
 
+ls -ld /app 
 
-mkdir /app  &>> $LOGFILE
+if [ $? -ne 0 ]
+then
+    echo "$i app dir not avaible lets create it"
+    mkdir /app &>>$LOGFILE
+    VALIDATE $? "roboshop user"
+else
+    echo "roboshop is already created"  &>>$LOGFILE
+    VALIDATE $? "app dir is already created"
+fi
+
 
 #VALIDATE $? "app directory created"
 
@@ -81,9 +91,23 @@ VALIDATE $? "Downloaded devolper content"
 cd /app     &>> $LOGFILE
 VALIDATE $? "Going to app dir"
 
-unzip /tmp/catalogue.zip    &>> $LOGFILE
-VALIDATE $? "unzip"
 
+
+find /tmp/catalogue.zip/
+if [ $? -ne 0 ]
+then
+    echo "$i catalogue.zip not avaible  lets create it"
+    unzip /tmp/catalogue.zip &>>$LOGFILE
+    VALIDATE $? "catalogue.zip"
+else
+    echo "catalogue.zip already unzip"  &>>$LOGFILE
+    VALIDATE $? "catalogue.zip already unzip"
+fi
+
+
+#unzip /tmp/catalogue.zip    &>> $LOGFILE
+#VALIDATE $? "unzip"
+#
 
 
 
