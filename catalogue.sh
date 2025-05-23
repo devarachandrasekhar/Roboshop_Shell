@@ -32,6 +32,24 @@ VALIDATE (){
 }
 
 
+#REPEATED_TASK=("yum install nodejs","id -u roboshop","ls -ld /app","find /tmp/catalogue.zip")
+#
+#while read -r line;
+# do
+#  $line 
+# if [ $? -ne 0]
+# then 
+#
+#  echo "Nodejs alredy installed"
+#else
+#   yum install nodejs
+#   VALIDATE $? nodejs
+#done <<< $REPEATED_TASK
+
+
+
+
+
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
 VALIDATE $? "Downloaded devolper content"
 
@@ -54,17 +72,7 @@ else
 fi
 
 
-
-#while read -r line;
-# do
-#  echo "Deleting: $line" &>>$STORING_DELETED_LOGFILE_NAME
-#
-#  rm -f "$line"
-#done <<< $FIND_DELETE_LOGFILE
-
-
-
-
+ 
 # useradd roboshop    &>> $LOGFILE
 
 ls -ld /app 
@@ -93,7 +101,7 @@ VALIDATE $? "Going to app dir"
 
 
 
-find /tmp/catalogue.zip
+find /tmp/catalogue.zip  &>> $LOGFILE
 
 if [ $? -ne 0 ]
 then
