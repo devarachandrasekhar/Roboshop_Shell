@@ -39,11 +39,37 @@ VALIDATE $? "Downloaded devolper content"
 yum install nodejs -y   &>> $LOGFILE
 VALIDATE $? "Installed nodeja"
 
-useradd roboshop    &>> $LOGFILE
+
+
+id -u roboshop &>>$LOGFILE
+
+if [ $? -ne 0 ]
+then
+    echo "$i roboshop user is not avaible lets create it"
+    useradd roboshop &>>$LOGFILE
+    VALIDATE $? "roboshop user"
+else
+    echo "roboshop is already created"  &>>$LOGFILE
+fi
+
+
+
+#while read -r line;
+# do
+#  echo "Deleting: $line" &>>$STORING_DELETED_LOGFILE_NAME
+#
+#  rm -f "$line"
+#done <<< $FIND_DELETE_LOGFILE
+
+
+
+
+# useradd roboshop    &>> $LOGFILE
 
 
 mkdir /app  &>> $LOGFILE
 
+VALIDATE $? "app directory created"
 
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip   &>> $LOGFILE
@@ -52,10 +78,10 @@ VALIDATE $? "Downloaded devolper content"
 
 
 cd /app     &>> $LOGFILE
-#VALIDATE $? "Going to app dir"
+VALIDATE $? "Going to app dir"
 
-#unzip /tmp/catalogue.zip    &>> $LOGFILE
-#VALIDATE $? "unzip"
+unzip /tmp/catalogue.zip    &>> $LOGFILE
+VALIDATE $? "unzip"
 
 
 
@@ -91,3 +117,5 @@ VALIDATE $? "mongoorg shll"
 
 mongo --host mongod.practicedevops.store </app/schema/catalogue.js &>> $LOGFILE
 VALIDATE $? "Loading data into mogodb"
+
+
