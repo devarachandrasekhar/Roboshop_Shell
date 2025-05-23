@@ -58,7 +58,7 @@ done <<EOF
 id -u roboshop|useradd roboshop|User roboshop
 ls -ld /app|mkdir /app|/app directory
 test -f /tmp/catalogue.zip|curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip|Catalogue zip file
-ttest -f /app/package.json|unzip -o /tmp/catalogue.zip -d /app|Unzipping catalogue
+test -f /app/package.json|unzip -o /tmp/catalogue.zip -d /app|Unzipping catalogue
 EOF
 
 
