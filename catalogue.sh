@@ -50,6 +50,7 @@ then
     VALIDATE $? "roboshop user"
 else
     echo "roboshop is already created"  &>>$LOGFILE
+    VALIDATE $? "roboshop is already created"
 fi
 
 
@@ -69,7 +70,7 @@ fi
 
 mkdir /app  &>> $LOGFILE
 
-VALIDATE $? "app directory created"
+#VALIDATE $? "app directory created"
 
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip   &>> $LOGFILE
