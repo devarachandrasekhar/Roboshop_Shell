@@ -93,7 +93,8 @@ VALIDATE $? "Going to app dir"
 
 
 
-find /tmp/catalogue.zip/
+find tmp/catalogue.zip
+
 if [ $? -ne 0 ]
 then
     echo "$i catalogue.zip not avaible  lets create it"
