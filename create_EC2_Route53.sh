@@ -14,7 +14,10 @@ NAMES=("mongodb" "redis")
 
 INSTANCE_TYPE=""
 IMAGE_ID="ami-09c813fb71547fc4f"
-DOMINE_NAM="practicedevops.store"
+DOMINE_NAME="practicedevops.store"
+SECURITY_GROUP_ID=sg-03bc87c4ab7c3d498
+HOSTED_ZONE=Z08310291HO6SKKR1U225
+
 
 
 for i in "${NAMES[@]}"
@@ -29,7 +32,7 @@ do
     IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID  --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
   echo "created $i instance: $IP_ADDRESS"
 
-   aws route53 change-resource-record-sets --hosted-zone-id Z08310291HO6SKKR1U225 --change-batch '
+   aws route53 change-resource-record-sets --hosted-zone-id $HOSTED_ZONE --change-batch '
    {
             "Changes": [{
             "Action": "CREATE",
