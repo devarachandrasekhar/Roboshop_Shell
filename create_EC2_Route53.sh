@@ -19,7 +19,7 @@ DOMINE_NAM="practicedevops.store"
 
 for i in "$(NAMES[@])"
 do 
-    if [[ $i == "mysql" || $i= "mongodb" ]]
+    if [[ $i == "mysql" || $i == "mongodb" ]]
     then 
         INSTANCE_TYPE="t3.medium"
     else
