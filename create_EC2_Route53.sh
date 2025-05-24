@@ -36,7 +36,7 @@ do
   --security-group-ids $SECURITY_GROUP_ID \
   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" \
   | jq -r '.Instances[0].PrivateIpAddress')
-  
+
   echo "created $i instance: $IP_ADDRESS"
 
    aws route53 change-resource-record-sets --hosted-zone-id $HOSTED_ZONE --change-batch '
