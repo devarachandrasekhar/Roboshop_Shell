@@ -17,7 +17,7 @@ IMAGE_ID="ami-09c813fb71547fc4f"
 DOMINE_NAM="practicedevops.store"
 
 
-for i in "$(NAMES[@])"
+for i in "${NAMES[@]}"
 do 
     if [[ $i == "mysql" || $i == "mongodb" ]]
     then 
