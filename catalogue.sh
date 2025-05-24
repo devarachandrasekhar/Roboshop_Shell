@@ -32,21 +32,6 @@ VALIDATE (){
 }
 
 
-#REPEATED_TASK=("yum install nodejs","id -u roboshop","ls -ld /app","find /tmp/catalogue.zip")
-#
-#while read -r line;
-# do
-#  $line 
-# if [ $? -ne 0]
-# then 
-#
-#  echo "Nodejs alredy installed"
-#else
-#   yum install nodejs
-#   VALIDATE $? nodejs
-#done <<< $REPEATED_TASK
-
-
 
 
 
