@@ -10,7 +10,7 @@
 
 #NAMES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
-NAMES=("web")
+NAMES=$@
 
 INSTANCE_TYPE=""
 IMAGE_ID="ami-09c813fb71547fc4f"
