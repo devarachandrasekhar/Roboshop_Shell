@@ -30,9 +30,9 @@ VALIDATE (){
     fi        
 }
 
-cp mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo &>> $LOGFILE
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
-VALIDATE $? "copied mongodb-org-4.4.repo in /etc/yum.repos.d/ "
+VALIDATE $? "copied mongo.repo in /etc/yum.repos.d/ "
 
 sudo dnf install -y mongodb-org &>> $LOGFILE
 
