@@ -75,12 +75,12 @@ fi
 #VALIDATE $? "app directory created"
 
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip   &>> $LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $LOGFILE
 VALIDATE $? "Downloaded devolper content"
 
 
 
-cd /app/     &>> $LOGFILE
+cd /app     &>> $LOGFILE
 VALIDATE $? "Going to app dir"
 
 
