@@ -125,7 +125,7 @@ systemctl start catalogue &>> $LOGFILE
 VALIDATE $? "start catalogue"
 
 
-cp /home/ec2-user/Roboshop_Shell/mongodb-org-4.4.repo /etc/yum.repos.d/mongodb-org-4.4.repo &>> $LOGFILE
+cp /home/ec2-user/Roboshop_Shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copy mongodb.repo into ect folder"
 
 
