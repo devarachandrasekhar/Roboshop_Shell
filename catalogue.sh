@@ -133,7 +133,7 @@ yum install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "mongoorg shll"
 
 
-mongo --host mongod.practicedevops.store </app/schema/catalogue.js &>> $LOGFILE
+mongo --host mongodb.practicedevops.store </app/schema/catalogue.js &>> $LOGFILE
 VALIDATE $? "Loading data into mogodb"
 
 
